@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatBasicComponent } from './ng-material/mat-basic/mat-basic.component';
+import { MatBasicComponentVaccines } from './ng-material/mat-basic-vaccines/mat-basic.component';
+import { MatBasicComponentPatients } from './ng-material/mat-basic-patients/mat-basic.component';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,15 @@ export class AppComponent {
   title = 'Vaccines_Test';
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
-    const dialogRef = this.dialog.open(MatBasicComponent);
+  openDialogVaccines() {
+    const dialogRef = this.dialog.open(MatBasicComponentVaccines);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  openDialogPatients() {
+    const dialogRef = this.dialog.open(MatBasicComponentPatients);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

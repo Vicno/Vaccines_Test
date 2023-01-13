@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatBasicComponent } from './mat-basic.component';
+import { MatBasicComponentPatients } from './mat-basic.component';
 
 describe('MatBasicComponent', () => {
-  let component: MatBasicComponent;
-  let fixture: ComponentFixture<MatBasicComponent>;
+  let component: MatBasicComponentPatients;
+  let fixture: ComponentFixture<MatBasicComponentPatients>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MatBasicComponent ]
+      declarations: [ MatBasicComponentPatients ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MatBasicComponent);
+    fixture = TestBed.createComponent(MatBasicComponentPatients);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

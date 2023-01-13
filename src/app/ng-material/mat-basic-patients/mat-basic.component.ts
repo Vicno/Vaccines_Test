@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './mat-basic.component.html',
   styleUrls: ['./mat-basic.component.css']
 })
-export class MatBasicComponent {
+export class MatBasicComponentPatients {
 
 }
