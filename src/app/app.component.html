@@ -1,3 +1,7 @@
 
 <button mat-raised-button color="primary" (click)="openDialogVaccines()">Open dialog</button>
 <button mat-raised-button color="primary" (click)="openDialogPatients()">Open dialog</button>
+<h3>Vaccines List</h3>
+<ul *ngFor="let vaccine of vaccines">
+  <span class="vaccineItem">{{vaccine.name}} / {{vaccine.cuantity}} / {{vaccine.days}}</span>
+</ul>

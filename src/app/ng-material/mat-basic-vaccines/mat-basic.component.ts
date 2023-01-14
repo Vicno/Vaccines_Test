@@ -6,7 +6,7 @@ import { VaccinesService } from './mat-basic.service';
   templateUrl: './mat-basic.component.html',
   styleUrls: ['./mat-basic.component.css']
 })
-export class MatBasicComponentVaccines /**implements OnInit**/ {
+export class MatBasicComponentVaccines implements OnInit {
 
   vaccines;
   name;
@@ -23,11 +23,11 @@ export class MatBasicComponentVaccines /**implements OnInit**/ {
     this.vaccines = this.vaccinesService.getVacciness();
   }
 
-  addVaccines() {
+  addVaccines(vaccineName, vaccineCuantity, vaccineDays) {
     let newVaccine = {
-      name: this.name,
-      cuantity: this.cuantity,
-      days: this.days
+      name: vaccineName,
+      cuantity: vaccineCuantity,
+      days: vaccineDays
     }
     this.vaccines.push(newVaccine);
 

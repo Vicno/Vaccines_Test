@@ -16,15 +16,20 @@ export class VaccinesService extends Init {
    }
 
    addVaccines(newVaccines) {
-      let vacciness = JSON.parse(localStorage.getItem('vacciness'));
+      let vacciness = this.getVacciness();
       // Add New VaccinesService
+      console.log("New Vaccines: " +  JSON.stringify(newVaccines))
+      console.log("vaccines value 1: " + JSON.stringify(vacciness));
       vacciness.push(newVaccines);
+      console.log("vaccines value 2: " + JSON.stringify(vacciness));
       // Set New Vacciness
-      localStorage.setItem('vacciness', JSON.stringify(vacciness));
+      localStorage.setItem('vaccines', JSON.stringify(vacciness));
+      console.log("vaccines value 3: " + JSON.stringify(vacciness));
+      console.log("localstorage: " + this.getVacciness());
    }
 
    deleteVaccines(VaccineName) {
-     let vacciness = JSON.parse(localStorage.getItem('vacciness'));
+     let vacciness = JSON.parse(localStorage.getItem('vaccines'));
 
      for(let i = 0; i <vacciness.length; i++) {
       if(vacciness[i].name == VaccineName) {
@@ -32,10 +37,10 @@ export class VaccinesService extends Init {
       }
    }
       // Set New Vacciness
-      localStorage.setItem('vacciness', JSON.stringify(vacciness));
+      localStorage.setItem('vaccines', JSON.stringify(vacciness));
    }
 
-     updateVaccines(oldName,name, cuantity, days){  let vacciness = JSON.parse(localStorage.getItem('vacciness'));
+     updateVaccines(oldName,name, cuantity, days){  let vacciness = JSON.parse(localStorage.getItem('vaccines'));
 
      for(let i = 0; i <vacciness.length; i++) {
       if(vacciness[i].name == oldName) {
@@ -45,6 +50,6 @@ export class VaccinesService extends Init {
       }
    }
       // Set New Vacciness
-      localStorage.setItem('vacciness', JSON.stringify(vacciness));
+      localStorage.setItem('vaccines', JSON.stringify(vacciness));
    }
 }
