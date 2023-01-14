@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMaterialModule } from './ng-material/ng-material.module';
+import { VaccinesService } from './ng-material/mat-basic-vaccines/mat-basic.service';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { NgMaterialModule } from './ng-material/ng-material.module';
     BrowserAnimationsModule,
     NgMaterialModule
   ],
-  providers: [],
+  providers: [VaccinesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,10 +12,10 @@ import { VaccinesService } from './ng-material/mat-basic-vaccines/mat-basic.serv
 export class AppComponent {
   title = 'Vaccines_Test';
   vaccines;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private vaccineService: VaccinesService) {}
 
   ngOnInit(){
-    this.vaccines = JSON.parse(localStorage.getItem('vaccines'));
+    this.vaccines = this.vaccineService.getVacciness();
   }
 
   openDialogVaccines() {

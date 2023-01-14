@@ -18,14 +18,9 @@ export class VaccinesService extends Init {
    addVaccines(newVaccines) {
       let vacciness = this.getVacciness();
       // Add New VaccinesService
-      console.log("New Vaccines: " +  JSON.stringify(newVaccines))
-      console.log("vaccines value 1: " + JSON.stringify(vacciness));
       vacciness.push(newVaccines);
-      console.log("vaccines value 2: " + JSON.stringify(vacciness));
       // Set New Vacciness
       localStorage.setItem('vaccines', JSON.stringify(vacciness));
-      console.log("vaccines value 3: " + JSON.stringify(vacciness));
-      console.log("localstorage: " + this.getVacciness());
    }
 
    deleteVaccines(VaccineName) {
