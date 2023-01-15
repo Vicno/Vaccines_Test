@@ -13,12 +13,14 @@ import { MatBasicComponentPatients } from './ng-material/mat-basic-patients/mat-
 import { MatBasicComponentPatientsSecond } from './ng-material/mat-basic-patients_second/mat-basic.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select'
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,9 @@ import {MatSelectModule} from '@angular/material/select'
     ReactiveFormsModule,
     MatButtonModule,
     NgxMatDatetimePickerModule,
-    MatSelectModule
+    NgxMatNativeDateModule,
+    MatSelectModule,MatDatepickerModule,
+    MatNativeDateModule,
   ],exports: [
     MatDialogModule,
     MatButtonModule
