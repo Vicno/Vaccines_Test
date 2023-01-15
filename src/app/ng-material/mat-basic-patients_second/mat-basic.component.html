@@ -1,14 +1,49 @@
-<h2 mat-dialog-title>Patients Second</h2>
-<mat-dialog-content class="mat-typography">
-  <h3>What is Angular?</h3>
+<h2 mat-dialog-title>Registro de Primera Dosis</h2>
+<mat-form-field appearance="fill">
+  <mat-label>Carnet de Identidad</mat-label>
+  <input type="text" matInput name="name" #firstCI>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Nombre</mat-label>
+  <input type="text" matInput name="name" #patientName>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Elija una Vacuna</mat-label>
+  <mat-select placeholder="Vacunas"
+  name="vaccinePicker1" 
+  #firstName>
+  <mat-option *ngFor="let vaccine of vaccines" 
+  [value]="vaccine.name">
+    {{vaccine.name}}
+  </mat-option>
+  </mat-select>
+</mat-form-field>
+<!--<mat-form-field appearance="fill">
+  <mat-label>Descripcion</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>-->
+<mat-form-field>
+  <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" 
+     [min]="2020" >
+  <mat-datepicker-toggle matSuffix></mat-datepicker-toggle>
+  <ngx-mat-datetime-picker #picker>
+  </ngx-mat-datetime-picker>
+</mat-form-field>
 
-  <p>Angular is a platform that makes it easy to build applications with the web. Angular
-    combines declarative templates, dependency injection, end to end tooling, and integrated
-    best practices to solve development challenges. Angular empowers developers to build
-    applications that live on the web, mobile, or the desktop</p>
-</mat-dialog-content>
+
+<!--
+  CI: 88888888,
+name: 'Pepe',
+first: 'Pfizer',
+second: '',
+firstDate: 21,
+daysToSecond: 22,
+secondDate: 22
+-->
+
+
 
 <mat-dialog-actions align="center">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="addPatients(firstCI, patientName, firstName, firstDate, daysToSecond)">Registrar</button>
 </mat-dialog-actions>

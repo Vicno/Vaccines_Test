@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientsService} from './mat-basic.service';
+import { VaccinesService} from '../mat-basic-vaccines/mat-basic.service';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 @Component({
   selector: 'app-mat-basic',
@@ -16,6 +18,8 @@ daysToSecond: 22,
 secondDate: 22
    */  
 export class MatBasicComponentPatientsSecond implements OnInit {
+  
+  vaccines;
   patients;
   CI;
   name;
@@ -27,13 +31,14 @@ export class MatBasicComponentPatientsSecond implements OnInit {
   oldName;
   oldFirst;
   oldSecond;
-
+  selectedVaccine: String;
   appState = 'default';
 
-  constructor(private patientsService: PatientsService) { }
+  constructor(private patientsService: PatientsService, private vaccineService: VaccinesService) { }
 
   ngOnInit() {
     this.patients = this.patientsService.getPatients();
+    this.vaccines = this.vaccineService.getVacciness();
   }
 
   addPatients(CI, name, first, firstDate, daysToSecond) {
@@ -86,5 +91,9 @@ export class MatBasicComponentPatientsSecond implements OnInit {
 
   this.patientsService.updatePatients(CI,name, second, secondDate);
 
+  }
+
+  selectVaccine(vaccine){
+    console.log("Selected: " + vaccine);
   }
 }

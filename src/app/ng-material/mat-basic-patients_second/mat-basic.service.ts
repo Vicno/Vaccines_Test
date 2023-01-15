@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Init } from './init-patients';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'any' })
 export class PatientsService extends Init {
 
   constructor() {
