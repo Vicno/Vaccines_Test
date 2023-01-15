@@ -15,7 +15,7 @@ firstDate: 21,
 daysToSecond: 22,
 secondDate: 22
    */  
-export class MatBasicComponentPatients implements OnInit {
+export class MatBasicComponentPatientsSecond implements OnInit {
   patients;
   CI;
   name;

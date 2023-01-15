@@ -36,7 +36,7 @@ export class MatBasicComponentVaccines implements OnInit {
   
   deleteVaccines(vaccineName) {
     for(let i = 0; i < this.vaccines.length; i++) {
-      if(this.vaccines[i].text == vaccineName) {
+      if(this.vaccines[i].name == vaccineName) {
           this.vaccines.splice(i, 1);
       }
     }
