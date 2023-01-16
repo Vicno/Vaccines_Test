@@ -20,6 +20,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select'
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,11 +48,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     NgxMatNativeDateModule,
     MatSelectModule,MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule,
+    MatGridListModule
   ],exports: [
     MatDialogModule,
     MatButtonModule
   ],
-  providers: [VaccinesService],
+  providers: [VaccinesService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

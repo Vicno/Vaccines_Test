@@ -1,0 +1,32 @@
+mat-card-header{
+    text-align:  center ;
+    align-content: center;
+    justify-content: center;
+    background-color: darkblue;
+    margin: auto;
+    width: 100%;
+    color: white;
+    flex-wrap: wrap;
+    height: 40px;
+}
+
+mat-card-title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.mat-mdc-card-header{
+    display:block;
+}
+button{
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: center;
+}
+input{
+    width: 40%;
+    align-self: center;
+    margin-top: 10px;
+}

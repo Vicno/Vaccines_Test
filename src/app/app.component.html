@@ -1,12 +1,27 @@
-
-<button mat-raised-button color="primary" (click)="openDialogVaccines()">Vacunas</button>
-<button mat-raised-button color="primary" (click)="openDialogPatients()">Primera Dosis</button>
-<button mat-raised-button color="primary" (click)="openDialogPatientsSecond()">Segunda Dosis</button>
-<h3>Vaccines List</h3>
-<ul *ngFor="let vaccine of vaccines">
-  <span class="vaccineItem">{{vaccine.name}} / {{vaccine.cuantity}} / {{vaccine.days}}</span>
-</ul>
-<h3>Patients List</h3>
-<ul *ngFor="let patient of patients">
-  <span class="vaccineItem">{{patient.CI}} / {{patient.name}} / {{patient.first}} / {{patient.second}} / {{patient.firstDate}} / {{patient.daysToSecond}} // {{patient.secondDate}}</span>
-</ul>
+<mat-card>
+  <mat-card-header>Servicio de registro rapido CEDES </mat-card-header>
+  <mat-card-title>Seleccione lo que desea registrar</mat-card-title>
+  
+  <button mat-raised-button color="primary" (click)="openDialogVaccines()">Vacunas</button>
+  <button mat-raised-button color="primary" (click)="openDialogPatients()">Primera Dosis</button>
+  <button mat-raised-button color="primary" (click)="openDialogPatientsSecond()">Segunda Dosis</button>
+  <!--<h3>Vaccines List</h3>
+  <ul *ngFor="let vaccine of vaccines">
+    <span class="vaccineItem">{{vaccine.name}} / {{vaccine.cuantity}} / {{vaccine.days}}</span>
+  </ul>
+  <h3>Patients List</h3>
+  <ul *ngFor="let patient of patients">
+    <span class="vaccineItem">{{patient.CI}} / {{patient.name}} / {{patient.first}} / {{patient.second}} / {{patient.firstDate}} / {{patient.daysToSecond}} // {{patient.secondDate}}</span>
+  </ul> -->
+  <mat-card-title> busqueda por CI</mat-card-title>
+  <input type="text" matInput name="searchCI" #searchCI pattern="^[0-9]*$" placeholder="CI">
+  <button mat-raised-button color="primary" (click)="searchByCI(searchCI.value)"> Buscar por CI </button>
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile> Nombre del paciente: {{name}} </mat-grid-tile>
+    <mat-grid-tile> Primera vacuna administrada {{first}} </mat-grid-tile>
+    <mat-grid-tile> Segunda vacuna administrada {{second}}</mat-grid-tile>
+    <mat-grid-tile> Fecha de la primera Dosis {{firstDate | date:'shortDate'}}</mat-grid-tile>
+    <mat-grid-tile> Dias necesarios antes de 2da dosis: {{daysToSecond}}</mat-grid-tile>
+    <mat-grid-tile> Fecha de la 2da Dosis {{secondDate | date:'shortDate'}}</mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

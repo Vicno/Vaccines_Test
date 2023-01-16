@@ -15,6 +15,13 @@ export class AppComponent {
   title = 'Vaccines_Test';
   vaccines;
   patients;
+  CI;
+  name;
+  first;
+  second;
+  firstDate;
+  daysToSecond;
+  secondDate;
   constructor(public dialog: MatDialog, private vaccineService: VaccinesService, private patientService: PatientsService) {}
 
   ngOnInit(){
@@ -42,5 +49,27 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  searchByCI(CI){
+    if(isNaN(CI)){
+      alert("Ingrese solo numeros en el CI");
+    } else{
+      this.patients = this.patientService.getPatients();
+      for(let i = 0; i < this.patients.length; i++) {
+        if(this.patients[i].CI == CI) {
+          this.CI = this.patients[i].CI,
+          this.name = this.patients[i].name,
+          this.first = this.patients[i].first,
+          this.second = this.patients[i].second,
+          this.firstDate = this.patients[i].firstDate,
+          this.daysToSecond = this.patients[i].daysToSecond,
+          this.secondDate = this.patients[i].secondDate
+          break;
+        }
+      }
+      alert("El CI ingresado no existe")
+    }
+    
   }
 }
