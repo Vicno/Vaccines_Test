@@ -20,7 +20,8 @@ export class PatientsService extends Init {
       // Add New VaccinesService
       patients.push(newPatients);
       // Set New Vacciness
-      localStorage.setItem('patients', JSON.stringify(patients));
+      console.log('Added new patient ' + newPatients );
+      localStorage.setItem('patients',  JSON.stringify(patients));
    }
 
    deletePatients(patientsName) {

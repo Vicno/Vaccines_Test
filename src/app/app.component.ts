@@ -4,6 +4,7 @@ import { MatBasicComponentVaccines } from './ng-material/mat-basic-vaccines/mat-
 import { MatBasicComponentPatients } from './ng-material/mat-basic-patients/mat-basic.component';
 import { MatBasicComponentPatientsSecond } from './ng-material/mat-basic-patients_second/mat-basic.component';
 import { VaccinesService } from './ng-material/mat-basic-vaccines/mat-basic.service';
+import { PatientsService } from './ng-material/mat-basic-patients/mat-basic.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,12 @@ import { VaccinesService } from './ng-material/mat-basic-vaccines/mat-basic.serv
 export class AppComponent {
   title = 'Vaccines_Test';
   vaccines;
-  constructor(public dialog: MatDialog, private vaccineService: VaccinesService) {}
+  patients;
+  constructor(public dialog: MatDialog, private vaccineService: VaccinesService, private patientService: PatientsService) {}
 
   ngOnInit(){
     this.vaccines = this.vaccineService.getVacciness();
+    this.patients = this.patientService.getPatients();
   }
 
   openDialogVaccines() {

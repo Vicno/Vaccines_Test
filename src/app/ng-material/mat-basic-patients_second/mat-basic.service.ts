@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Init } from './init-patients';
 
 @Injectable({ providedIn: 'any' })
-export class PatientsService extends Init {
+export class PatientsServiceSecond extends Init {
 
   constructor() {
     super();

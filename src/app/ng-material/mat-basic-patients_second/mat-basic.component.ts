@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientsService} from './mat-basic.service';
+import { PatientsServiceSecond} from './mat-basic.service';
 import { VaccinesService} from '../mat-basic-vaccines/mat-basic.service';
-import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+
 
 @Component({
   selector: 'app-mat-basic',
@@ -34,10 +34,10 @@ export class MatBasicComponentPatientsSecond implements OnInit {
   selectedVaccine: String;
   appState = 'default';
 
-  constructor(private patientsService: PatientsService, private vaccineService: VaccinesService) { }
+  constructor(private patientsServiceSecond: PatientsServiceSecond, private vaccineService: VaccinesService) { }
 
   ngOnInit() {
-    this.patients = this.patientsService.getPatients();
+    this.patients = this.patientsServiceSecond.getPatients();
     this.vaccines = this.vaccineService.getVacciness();
   }
 
@@ -53,7 +53,7 @@ export class MatBasicComponentPatientsSecond implements OnInit {
     }
     this.patients.push(newPatient);
 
-    this.patientsService.addPatients(newPatient);
+    this.patientsServiceSecond.addPatients(newPatient);
   }
   
   deletePatients(patientCI) {
@@ -63,7 +63,7 @@ export class MatBasicComponentPatientsSecond implements OnInit {
       }
     }
 
-    this.patientsService.deletePatients(patientCI);
+    this.patientsServiceSecond.deletePatients(patientCI);
   }
 
   /*
@@ -89,7 +89,7 @@ export class MatBasicComponentPatientsSecond implements OnInit {
       }
   }
 
-  this.patientsService.updatePatients(CI,name, second, secondDate);
+  this.patientsServiceSecond.updatePatients(CI,name, second, secondDate);
 
   }
 

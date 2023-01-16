@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientsService} from './mat-basic.service';
 import { VaccinesService} from '../mat-basic-vaccines/mat-basic.service';
+import {FormControl} from '@angular/forms';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 @Component({
@@ -33,6 +34,7 @@ export class MatBasicComponentPatients implements OnInit {
   oldSecond;
   selectedVaccine: String;
   appState = 'default';
+  dateSelected = new FormControl(new Date());
 
   constructor(private patientsService: PatientsService, private vaccineService: VaccinesService) { }
 
@@ -41,14 +43,22 @@ export class MatBasicComponentPatients implements OnInit {
     this.vaccines = this.vaccineService.getVacciness();
   }
 
-  addPatients(CI, name, first, firstDate, daysToSecond) {
+  addPatients(CI, name, first) {
+    this.vaccines = this.vaccineService.getVacciness();
+    for(let i = 0; i < this.vaccines.length; i++) {
+      if(this.vaccines[i].name == first) {
+      this.daysToSecond = this.vaccines[i].days;
+      break;
+      }
+  }
+  console.log("Date input" + JSON.stringify(this.dateSelected))
     let newPatient = {
       CI: CI,
       name: name,
       first: first,
       second: '',
-      firstDate: firstDate,
-      daysToSecond: daysToSecond,
+      firstDate: this.dateSelected,
+      daysToSecond: this.daysToSecond,
       secondDate: ''
     }
     this.patients.push(newPatient);

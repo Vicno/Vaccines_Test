@@ -6,3 +6,7 @@
 <ul *ngFor="let vaccine of vaccines">
   <span class="vaccineItem">{{vaccine.name}} / {{vaccine.cuantity}} / {{vaccine.days}}</span>
 </ul>
+<h3>Patients List</h3>
+<ul *ngFor="let patient of patients">
+  <span class="vaccineItem">{{patient.CI}} / {{patient.name}} / {{patient.first}} / {{patient.second}} / {{patient.firstDate}} / {{patient.daysToSecond}} // {{patient.secondDate}}</span>
+</ul>
