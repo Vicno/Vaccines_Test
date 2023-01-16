@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Registro de Segunda Dosis</h2>
+<mat-form-field appearance="fill">
+  <mat-label>Carnet de Identidad</mat-label>
+  <input type="text" matInput name="secondCI" #secondCI pattern="^[0-9]*$">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Elija una Vacuna</mat-label>
+  <mat-select placeholder="Vacunas"
+  name="vaccinePicker1" 
+  #secondName>
+  <mat-option *ngFor="let vaccine of vaccines" 
+  [value]="vaccine.name">
+    {{vaccine.name}}
+  </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Elija una fecha</mat-label>
+  <input matInput [(ngModel)]="dateSelected" [matDatepicker]="picker2" >
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+</mat-form-field>
+
+
+
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="updatePatient(secondCI.value, secondName.value)">Registrar</button>
+</mat-dialog-actions>

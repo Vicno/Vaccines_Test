@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Registro de Vacunas</h2>
+<mat-form-field appearance="fill">
+  <mat-label>Nombre de vacuna</mat-label>
+  <input type="text" matInput name="name" #vaccineName>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Cantidad de vacunas</mat-label>
+  <input type="text" matInput name="cuantity" #vaccineCuantity>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>dias para segunda dosis</mat-label>
+  <input type="text" matInput name="days" #vaccineDays>
+</mat-form-field>
+
+
+
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="addVaccines(vaccineName.value, vaccineCuantity.value, vaccineDays.value)">Registrar</button>
+</mat-dialog-actions>
