@@ -1,17 +1,13 @@
-<h2 mat-dialog-title>Registro de Primera Dosis</h2>
+<h2 mat-dialog-title>Registro de Segunda Dosis</h2>
 <mat-form-field appearance="fill">
   <mat-label>Carnet de Identidad</mat-label>
-  <input type="text" matInput name="name" #firstCI>
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Nombre</mat-label>
-  <input type="text" matInput name="name" #patientName>
+  <input type="text" matInput name="secondCI" #secondCI pattern="^[0-9]*$">
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label>Elija una Vacuna</mat-label>
   <mat-select placeholder="Vacunas"
   name="vaccinePicker1" 
-  #firstName>
+  #secondName>
   <mat-option *ngFor="let vaccine of vaccines" 
   [value]="vaccine.name">
     {{vaccine.name}}
@@ -22,14 +18,14 @@
   <mat-label>Descripcion</mat-label>
   <textarea matInput></textarea>
 </mat-form-field>-->
-<mat-form-field>
-  <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" 
-     [min]="2020" >
-  <mat-datepicker-toggle matSuffix></mat-datepicker-toggle>
-  <ngx-mat-datetime-picker #picker>
-  </ngx-mat-datetime-picker>
+<mat-form-field appearance="fill">
+  <mat-label>Elija una fecha</mat-label>
+  <input matInput [(ngModel)]="dateSelected" [matDatepicker]="picker2" >
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
 </mat-form-field>
-
+{{dateSelected}}
 
 <!--
   CI: 88888888,
@@ -45,5 +41,5 @@ secondDate: 22
 
 <mat-dialog-actions align="center">
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button mat-dialog-close cdkFocusInitial (click)="addPatients(firstCI, patientName, firstName, firstDate, daysToSecond)">Registrar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="updatePatient(secondCI.value, secondName.value)">Registrar</button>
 </mat-dialog-actions>

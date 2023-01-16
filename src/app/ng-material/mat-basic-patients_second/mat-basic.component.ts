@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientsServiceSecond} from './mat-basic.service';
 import { VaccinesService} from '../mat-basic-vaccines/mat-basic.service';
-
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-mat-basic',
@@ -33,6 +33,7 @@ export class MatBasicComponentPatientsSecond implements OnInit {
   oldSecond;
   selectedVaccine: String;
   appState = 'default';
+  dateSelected = new FormControl(new Date());
 
   constructor(private patientsServiceSecond: PatientsServiceSecond, private vaccineService: VaccinesService) { }
 
@@ -41,19 +42,44 @@ export class MatBasicComponentPatientsSecond implements OnInit {
     this.vaccines = this.vaccineService.getVacciness();
   }
 
-  addPatients(CI, name, first, firstDate, daysToSecond) {
-    let newPatient = {
-      CI: CI,
-      name: name,
-      first: first,
-      second: '',
-      firstDate: firstDate,
-      daysToSecond: daysToSecond,
-      secondDate: ''
+  searchForFirstDosis(CI){
+    this.patients = this.patientsServiceSecond.getPatients()
+    for(let i = 0; i < this.patients.length; i++) {
+      if(this.patients[i].CI == CI) {
+      return true;
+      }
     }
-    this.patients.push(newPatient);
+    
+    return false;
+  }
 
-    this.patientsServiceSecond.addPatients(newPatient);
+  addPatients(CI, name, first) {
+    if(isNaN(CI)){
+      alert("Ingrese solo numeros en el CI");
+    }
+    else {
+
+      this.vaccines = this.vaccineService.getVacciness();
+      for(let i = 0; i < this.vaccines.length; i++) {
+        if(this.vaccines[i].name == first) {
+        this.daysToSecond = this.vaccines[i].days;
+        break;
+        }
+      }
+      console.log("Date input" + JSON.stringify(this.dateSelected))
+      let newPatient = {
+        CI: CI,
+        name: name,
+        first: first,
+        second: '',
+        firstDate: this.dateSelected,
+        daysToSecond: this.daysToSecond,
+        secondDate: ''
+      }
+      this.patients.push(newPatient);
+
+      this.patientsServiceSecond.addPatients(newPatient);
+    }
   }
   
   deletePatients(patientCI) {
@@ -79,17 +105,23 @@ export class MatBasicComponentPatientsSecond implements OnInit {
     this.days = vaccine.days;
   }
 */
-  updatePatient(CI,name, second, secondDate ) {
+  updatePatient(CI, second) {
+    if(isNaN(CI)){
+      alert("Ingrese solo numeros en el CI");
+    }
+    else if(this.searchForFirstDosis(CI)==false){
+      alert("No se registro primera dosis, operacion fallida");
+    }else{
     console.log(CI);
         for(let i = 0; i < this.patients.length; i++) {
           if(this.patients[i].CI == CI) {
-          this.patients[i].name = name;
           this.patients[i].second = second;
-          this.patients[i].secondDate = secondDate;
+          this.patients[i].secondDate = this.dateSelected;
       }
+    }
   }
 
-  this.patientsServiceSecond.updatePatients(CI,name, second, secondDate);
+  this.patientsServiceSecond.updatePatients(CI, second, this.dateSelected);
 
   }
 

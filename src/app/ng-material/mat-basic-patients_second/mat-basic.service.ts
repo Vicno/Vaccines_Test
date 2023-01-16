@@ -20,7 +20,8 @@ export class PatientsServiceSecond extends Init {
       // Add New VaccinesService
       patients.push(newPatients);
       // Set New Vacciness
-      localStorage.setItem('patients', JSON.stringify(patients));
+      console.log('Added new patient ' + newPatients );
+      localStorage.setItem('patients',  JSON.stringify(patients));
    }
 
    deletePatients(patientsName) {
@@ -35,12 +36,11 @@ export class PatientsServiceSecond extends Init {
       localStorage.setItem('patients', JSON.stringify(patients));
    }
 
-    updatePatients(CI,name, second, secondDate){  
+    updatePatients(CI, second, secondDate){  
         let patients = JSON.parse(localStorage.getItem('patients'));
 
      for(let i = 0; i <patients.length; i++) {
       if(patients[i].CI == CI) {
-        patients[i].name = name;
         patients[i].second = second;
         patients[i].secondDate = secondDate;
       }
