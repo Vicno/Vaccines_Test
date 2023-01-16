@@ -44,26 +44,32 @@ export class MatBasicComponentPatients implements OnInit {
   }
 
   addPatients(CI, name, first) {
-    this.vaccines = this.vaccineService.getVacciness();
-    for(let i = 0; i < this.vaccines.length; i++) {
-      if(this.vaccines[i].name == first) {
-      this.daysToSecond = this.vaccines[i].days;
-      break;
-      }
-  }
-  console.log("Date input" + JSON.stringify(this.dateSelected))
-    let newPatient = {
-      CI: CI,
-      name: name,
-      first: first,
-      second: '',
-      firstDate: this.dateSelected,
-      daysToSecond: this.daysToSecond,
-      secondDate: ''
+    if(isNaN(CI)){
+      alert("Ingrese solo numeros en el CI")
     }
-    this.patients.push(newPatient);
+    else{
 
-    this.patientsService.addPatients(newPatient);
+      this.vaccines = this.vaccineService.getVacciness();
+      for(let i = 0; i < this.vaccines.length; i++) {
+        if(this.vaccines[i].name == first) {
+        this.daysToSecond = this.vaccines[i].days;
+        break;
+        }
+      }
+      console.log("Date input" + JSON.stringify(this.dateSelected))
+      let newPatient = {
+        CI: CI,
+        name: name,
+        first: first,
+        second: '',
+        firstDate: this.dateSelected,
+        daysToSecond: this.daysToSecond,
+        secondDate: ''
+      }
+      this.patients.push(newPatient);
+
+      this.patientsService.addPatients(newPatient);
+    }
   }
   
   deletePatients(patientCI) {
