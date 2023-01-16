@@ -14,10 +14,6 @@
   </mat-option>
   </mat-select>
 </mat-form-field>
-<!--<mat-form-field appearance="fill">
-  <mat-label>Descripcion</mat-label>
-  <textarea matInput></textarea>
-</mat-form-field>-->
 <mat-form-field appearance="fill">
   <mat-label>Elija una fecha</mat-label>
   <input matInput [(ngModel)]="dateSelected" [matDatepicker]="picker2" >
@@ -25,17 +21,6 @@
   <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
   <mat-datepicker #picker2></mat-datepicker>
 </mat-form-field>
-{{dateSelected}}
-
-<!--
-  CI: 88888888,
-name: 'Pepe',
-first: 'Pfizer',
-second: '',
-firstDate: 21,
-daysToSecond: 22,
-secondDate: 22
--->
 
 
 

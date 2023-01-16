@@ -17,9 +17,9 @@ export class PatientsServiceSecond extends Init {
 
    addPatients(newPatients) {
       let patients = this.getPatients();
-      // Add New VaccinesService
+      // Add New PatientsService
       patients.push(newPatients);
-      // Set New Vacciness
+      // Set New Patients
       console.log('Added new patient ' + newPatients );
       localStorage.setItem('patients',  JSON.stringify(patients));
    }
@@ -32,7 +32,7 @@ export class PatientsServiceSecond extends Init {
           patients.splice(i, 1);
       }
    }
-      // Set New Vacciness
+      // Set New Patients
       localStorage.setItem('patients', JSON.stringify(patients));
    }
 
@@ -45,17 +45,7 @@ export class PatientsServiceSecond extends Init {
         patients[i].secondDate = secondDate;
       }
    }
-      // Set New Vacciness
+      // Set New Patients
       localStorage.setItem('patients', JSON.stringify(patients));
    }
 }
-
-/*
-CI: 88888888,
-name: 'Pepe',
-first: 'Pfizer',
-second: '',
-firstDate: 21,
-daysToSecond: 22,
-secondDate: 22
-   */   

@@ -9,15 +9,7 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
   templateUrl: './mat-basic.component.html',
   styleUrls: ['./mat-basic.component.css']
 })
-/*
-CI: 88888888,
-name: 'Pepe',
-first: 'Pfizer',
-second: '',
-firstDate: 21,
-daysToSecond: 22,
-secondDate: 22
-   */  
+
 export class MatBasicComponentPatients implements OnInit {
   
   vaccines;
@@ -82,19 +74,6 @@ export class MatBasicComponentPatients implements OnInit {
     this.patientsService.deletePatients(patientCI);
   }
 
-  /*
-  editVaccines(vaccine) {
-    this.appState = 'edit';
-    this.oldName = vaccine.name;
-    this.name = vaccine.text;
-    this.appState = 'edit';
-    this.oldCuantity = vaccine.cuantity;
-    this.cuantity = vaccine.cuantity;
-    this.appState = 'edit';
-    this.oldDays = vaccine.days;
-    this.days = vaccine.days;
-  }
-*/
   updatePatient(CI,name, second, secondDate ) {
     console.log(CI);
         for(let i = 0; i < this.patients.length; i++) {

@@ -23,7 +23,7 @@ export class Init {
         localStorage.setItem('vaccines', JSON.stringify(vaccines));
         return 
       } else {
-        console.log('Found Todos...');
+        console.log('Found Vaccines..');
       }
     }
   }
